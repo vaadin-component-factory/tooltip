@@ -23,6 +23,7 @@ import java.util.Optional;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasComponents;
+import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -46,6 +47,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     private final String IS_ATTACHED_PROPERTY = "isAttached";
 
     /**
+     * x
      * Default constructor.
      */
     public Tooltip() {
@@ -76,6 +78,31 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     }
 
     /**
+     * Sets the UI object explicitly disabled or enabled.
+     *
+     * @param enabled if {@code false} then explicitly disables the object, if
+     *                {@code true} then enables the object so that its state depends
+     *                on parent
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        getElement().setProperty(MANUAL_PROPERTY, enabled);
+    }
+
+    /**
+     * Returns whether the object is enabled or disabled.
+     * <p>
+     * Object may be enabled by itself by but if its ascendant is disabled then
+     * it's considered as (implicitly) disabled.
+     *
+     * @return enabled state of the object
+     */
+    @Override
+    public boolean isEnabled() {
+        return getElement().getProperty(MANUAL_PROPERTY, false);
+    }
+
+    /**
      * Checks if the tooltip is attached to an element or not.
      *
      * @return <code>true</code> the tooltip is attached to an element
@@ -84,7 +111,6 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     public boolean isAttached() {
         return getElement().getProperty(IS_ATTACHED_PROPERTY, false);
     }
-
 
     /**
      * Sets the position of the tooltip.
