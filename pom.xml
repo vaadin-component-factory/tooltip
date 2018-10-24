@@ -20,7 +20,8 @@
 	</organization>
 
 	<properties>
-		<flow.version>1.0.1</flow.version>
+		<vaadin.version>10.0.6</vaadin.version>
+		<flow.version>1.0.5</flow.version>
 		<testbench.version>6.0.1</testbench.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -44,4 +45,23 @@
 			<url>http://maven.vaadin.com/vaadin-prereleases</url>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<type>pom</type>
+				<scope>import</scope>
+				<version>${vaadin.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-core</artifactId>
+		</dependency>
+	</dependencies>
 </project>

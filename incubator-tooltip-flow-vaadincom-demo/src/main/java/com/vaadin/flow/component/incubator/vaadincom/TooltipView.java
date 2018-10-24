@@ -4,15 +4,13 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.incubator.Tooltip;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
 /**
  * The main view contains a button and a click listener.
  */
-@Route("")
+@Route("tooltip")
 public class TooltipView extends DemoView {
 
 
