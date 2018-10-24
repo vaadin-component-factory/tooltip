@@ -22,11 +22,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.HasComponents;
-import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.shared.Registration;
 
 /**
  * Server-side component for the <code>incubator-tooltip</code> element.
@@ -43,11 +46,11 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     private final String ATTACHED_COMPONENT_ID_PROPERTY = "for";
     private final String POSITION_PROPERTY = "position";
     private final String ALIGNMENT_PROPERTY = "alignment";
+    private final String HIDDEN_MSG_PROPERTY = "hidden";
     private final String MANUAL_PROPERTY = "manual";
     private final String IS_ATTACHED_PROPERTY = "isAttached";
 
     /**
-     * x
      * Default constructor.
      */
     public Tooltip() {
@@ -78,7 +81,25 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     }
 
     /**
+     * Opens the content of the tooltip.
+     */
+    public void open() {
+        getElement().setProperty(HIDDEN_MSG_PROPERTY, false);
+        getElement().callFunction("show"); // TODO check
+    }
+
+    /**
+     * Hides the content of the tooltip.
+     */
+    public void close() {
+        getElement().setProperty(HIDDEN_MSG_PROPERTY, true);
+        getElement().callFunction("hide");
+    }
+
+    /**
      * Sets the UI object explicitly disabled or enabled.
+     *
+     *  TODO: It does not work well yet
      *
      * @param enabled if {@code false} then explicitly disables the object, if
      *                {@code true} then enables the object so that its state depends
@@ -110,6 +131,27 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      */
     public boolean isAttached() {
         return getElement().getProperty(IS_ATTACHED_PROPERTY, false);
+    }
+
+    /**
+     * Adds a listener for {@code ClickEvent}.
+     *
+     * @param listener the listener
+     * @return a {@link Registration} for removing the event listener
+     */
+    public Registration addClickListener(ComponentEventListener<ClickEvent> listener) {
+        return addListener(ClickEvent.class, listener);
+    }
+
+    /**
+     * Click event on the component.
+     */
+    @DomEvent("click")
+    public static class ClickEvent extends ComponentEvent<Tooltip> {
+
+        public ClickEvent(Tooltip source, boolean fromClient) {
+            super(source, fromClient);
+        }
     }
 
     /**

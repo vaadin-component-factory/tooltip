@@ -26,11 +26,28 @@ tooltip.setAlignment(Tooltip.Alignment.LEFT);
 
 tooltip.add(new H5("Hello"));
 tooltip.add(new Paragraph("This is an example of how to use it"));
-
-add(tooltip,button);
 ```
 
+It is possible to open and close the tooltip manually:
 
+```
+Button close = new Button("close", event -> {
+   tooltip.close();
+});
+
+button.addClickListener(event -> {
+   tooltip.setEnabled(!tooltip.isEnabled());
+});
+```
+
+Click listeners can be added to the tooltip:
+```
+tooltip.addClickListener(event -> {
+    Notification notification = new Notification(
+            "You clicked on the avatar", 3000, Notification.Position.TOP_CENTER);
+    notification.open();
+});
+```
 
 # How to run the demo?
 
