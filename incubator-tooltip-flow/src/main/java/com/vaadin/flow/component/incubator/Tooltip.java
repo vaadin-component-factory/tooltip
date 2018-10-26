@@ -89,7 +89,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @param component the tooltip is attached to this component
      * @param position "top","right","left" or "bottom"
-     * @param alignment "top","right","left" or "bottom"
+     * @param alignment "top","right","left","bottom" or "center"
      */
     public Tooltip(Component component, String position, String alignment){
         this(component,position);
@@ -258,7 +258,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     /**
      * Sets the alignment of the tooltip.
      *
-     * @param alignment alignment "top","right","left" or "bottom"
+     * @param alignment alignment "top","right","left","bottom" or "center"
      */
     public void setAlignment(String alignment) {
         getElement().setProperty(ALIGNMENT_PROPERTY, alignment);
@@ -281,7 +281,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return alignment "top","right","left" or "bottom"
+     * @return alignment "top","right","left","bottom" or center
      */
     public String getAlignmentText() {
         return getElement().getProperty(ALIGNMENT_PROPERTY);
