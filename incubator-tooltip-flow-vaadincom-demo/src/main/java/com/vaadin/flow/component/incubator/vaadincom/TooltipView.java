@@ -1,6 +1,7 @@
 package com.vaadin.flow.component.incubator.vaadincom;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.incubator.Tooltip;
@@ -25,10 +26,9 @@ public class TooltipView extends DemoView {
 
     private void createBasicExample() {
 
-        Button button = new Button("Click me");
+        Button button = new Button("Hover on me");
         Tooltip tooltip = new Tooltip();
 
-        button.setId("myButton");
         tooltip.attachToComponent(button);
 
         tooltip.setPosition(Tooltip.Position.RIGHT);
@@ -42,45 +42,42 @@ public class TooltipView extends DemoView {
 
     private void createDisabledTooltipExample() {
 
-        Button button = new Button("Click me");
+        Button button = new Button("Enable/Disable tooltip");
         Tooltip tooltip = new Tooltip();
 
-        button.setId("myButton");
         tooltip.attachToComponent(button);
 
         tooltip.setPosition(Tooltip.Position.RIGHT);
         tooltip.setAlignment(Tooltip.Alignment.LEFT);
 
-        tooltip.add(new H5("Bye"));
-        tooltip.add(new Paragraph("This is an example of how to use it"));
+        tooltip.add(new H5("I am enable"));
+        tooltip.add(new Paragraph("I am enable"));
 
         button.addClickListener(event -> {
             tooltip.setEnabled(!tooltip.isEnabled());
         });
 
-        tooltip.setEnabled(false);
         addCard("Tooltip disable/disable example", button, tooltip);
     }
 
     private void createOpenCloseTooltipExample() {
 
-        Button button = new Button("Click me");
+        Button button = new Button("Button");
         Tooltip tooltip = new Tooltip();
 
-        button.setId("myButton");
         tooltip.attachToComponent(button);
 
         tooltip.setPosition(Tooltip.Position.RIGHT);
         tooltip.setAlignment(Tooltip.Alignment.LEFT);
 
-        tooltip.add(new H5("Bye"));
-        tooltip.add(new Paragraph("This is an example of how to use it"));
+        tooltip.add(new H5("Manual tooltip"));
+        tooltip.add(new Paragraph("The tooltip is controlled programmatically"));
 
-        Button open = new Button("open", event -> {
+        Button open = new Button("Open tooltip", event -> {
             tooltip.open();
         });
 
-        Button close = new Button("close", event -> {
+        Button close = new Button("Close tooltip", event -> {
             tooltip.close();
         });
 
@@ -89,21 +86,21 @@ public class TooltipView extends DemoView {
         });
 
         tooltip.setEnabled(false);
-        addCard("Opening and closing a tooltip programmatically", button, tooltip, open, close);
+        addCard("Opening and closing a tooltip programmatically", button, tooltip, new Div(open, close));
     }
 
     private void createOnClickTooltipExample() {
-        Button button = new Button("Click me");
+        Button button = new Button("Hover on me");
         Tooltip tooltip = new Tooltip();
 
-        button.setId("myButton");
+        //button.setId("myButton");
         tooltip.attachToComponent(button);
 
         tooltip.setPosition(Tooltip.Position.RIGHT);
         tooltip.setAlignment(Tooltip.Alignment.LEFT);
 
-        tooltip.add(new H5("Hello"));
-        tooltip.add(new Paragraph("This is an example of how to use it"));
+        tooltip.add(new H5("Click on me"));
+        tooltip.add(new Paragraph("Click on the tooltip to see the notification"));
 
         tooltip.addClickListener(event -> {
             Notification notification = new Notification(
