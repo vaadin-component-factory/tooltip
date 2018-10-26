@@ -96,7 +96,6 @@ public class TooltipView extends DemoView {
         Button button = new Button("Hover on me");
         Tooltip tooltip = new Tooltip();
 
-        //button.setId("myButton");
         tooltip.attachToComponent(button);
 
         tooltip.setPosition(Tooltip.Position.RIGHT);
