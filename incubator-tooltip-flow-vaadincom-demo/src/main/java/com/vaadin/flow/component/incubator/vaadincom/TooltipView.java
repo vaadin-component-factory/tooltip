@@ -85,7 +85,7 @@ public class TooltipView extends DemoView {
             tooltip.setEnabled(!tooltip.isEnabled());
         });
 
-        tooltip.setEnabled(false);
+        tooltip.setManualMode(true);
         addCard("Opening and closing a tooltip programmatically", button, tooltip, new Div(open, close));
     }
 
