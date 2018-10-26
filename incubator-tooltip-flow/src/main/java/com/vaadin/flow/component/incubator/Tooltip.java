@@ -19,7 +19,6 @@ package com.vaadin.flow.component.incubator;
 
 
 import java.util.Objects;
-import java.util.Optional;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
@@ -29,13 +28,12 @@ import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.internal.nodefeature.ElementData;
 import com.vaadin.flow.shared.Registration;
 
 /**
  * Server-side component for the <code>incubator-tooltip</code> element.
- * <p>
- * Note:
- * There are still some bugs in the implementation of incubator-tooltip.
+ * Default tooltip's position and alignment are top and center respectively.
  *
  * @author Vaadin Ltd
  */
@@ -48,7 +46,6 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     private final String ALIGNMENT_PROPERTY = "alignment";
     private final String HIDDEN_MSG_PROPERTY = "hidden";
     private final String MANUAL_PROPERTY = "manual";
-    private final String IS_ATTACHED_PROPERTY = "isAttached";
 
     /**
      * Default constructor.
@@ -62,12 +59,12 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * @param component the tooltip is attached to this component
      */
     public void attachToComponent(Component component) {
-        Optional<String> componentId = component.getId();
-        if (componentId.isPresent()) {
-            attachToComponent(componentId.get());
-        } else {
-            throw new IllegalArgumentException("Tooltip: The component does not have an id.");
-        }
+        Objects.requireNonNull(component);
+
+        getElement().getNode().runWhenAttached(ui ->
+                ui.getPage().executeJavaScript("$0.targetElement = $1;",
+                        getElement(), component.getElement()
+                ));
     }
 
     /**
@@ -85,7 +82,6 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      */
     public void open() {
         getElement().setProperty(HIDDEN_MSG_PROPERTY, false);
-        getElement().callFunction("show"); // TODO check
     }
 
     /**
@@ -93,44 +89,47 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      */
     public void close() {
         getElement().setProperty(HIDDEN_MSG_PROPERTY, true);
-        getElement().callFunction("hide");
     }
 
     /**
-     * Sets the UI object explicitly disabled or enabled.
-     *
-     *  TODO: It does not work well yet
-     *
-     * @param enabled if {@code false} then explicitly disables the object, if
-     *                {@code true} then enables the object so that its state depends
-     *                on parent
-     */
-    @Override
-    public void setEnabled(boolean enabled) {
-        getElement().setProperty(MANUAL_PROPERTY, enabled);
-    }
-
-    /**
-     * Returns whether the object is enabled or disabled.
+     * Handle component enable state when the enabled state changes.
      * <p>
-     * Object may be enabled by itself by but if its ascendant is disabled then
-     * it's considered as (implicitly) disabled.
+     * By default this sets or removes the 'disabled' attribute from the
+     * element. This can be overridden to have custom handling.
      *
-     * @return enabled state of the object
+     * @param enabled
+     *            the new enabled state of the component
      */
     @Override
-    public boolean isEnabled() {
-        return getElement().getProperty(MANUAL_PROPERTY, false);
+    public void onEnabledStateChanged(boolean enabled) {
+        // If the node has feature ElementData, then we know that the state
+        // provider accepts attributes
+        if (getElement().getNode().hasFeature(ElementData.class)) {
+            getElement().callFunction("hide"); // needed to close tooltip
+            getElement().setAttribute(MANUAL_PROPERTY, !enabled);
+        }
     }
 
     /**
-     * Checks if the tooltip is attached to an element or not.
+     * Checks the manual mode of the tooltip.
      *
-     * @return <code>true</code> the tooltip is attached to an element
-     * <code>false</code>, otherwise
+     * @return manualMode <code>true</code> the tooltip is controlled programmatically
+     *                  <code>false</code>, it is controlled automatically
      */
-    public boolean isAttached() {
-        return getElement().getProperty(IS_ATTACHED_PROPERTY, false);
+    public boolean isManualMode(){
+        return getElement().getProperty(MANUAL_PROPERTY,false);
+    }
+
+    /**
+     * Sets the manual mode of the tooltip.
+     * <p>
+     * manualMode requires to open or close the tooltip manually.
+     *
+     * @param manualMode <code>true</code> the tooltip is controlled programmatically
+     *                  <code>false</code>, it is controlled automatically
+     */
+    public void setManualMode(boolean manualMode){
+        getElement().setProperty(MANUAL_PROPERTY,manualMode);
     }
 
     /**
@@ -249,6 +248,8 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
 
     /**
      * Helper enumeration to specify the position of the <code>Tooltip</code>.
+     * Position determines if the tooltip will be positioned on the top, bottom,
+     * left or right of the attached component.
      */
     public enum Position {
         TOP("top"),
@@ -278,6 +279,17 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
 
     /**
      * Helper enumeration to specify the alignment of the <code>Tooltip</code>.
+     * <p>
+     * The alignment determines the placement of the tooltip in the chosen position.
+     * <p>
+     * i.e.     alignment bottom    alignment top
+     *          !!!!!!!!!!!!!
+     *          !           !
+     * ------   !           !       !!!!!!!!!!!!!
+     * |Button| !           !       !           !
+     * ------   !!!!!!!!!!!!!       !           !
+     *                              !           !
+     *                              !!!!!!!!!!!!!
      */
     public enum Alignment {
         TOP("top"),
