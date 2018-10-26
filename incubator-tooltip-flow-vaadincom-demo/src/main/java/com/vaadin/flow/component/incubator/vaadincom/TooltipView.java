@@ -6,6 +6,8 @@ import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.incubator.Tooltip;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
@@ -18,6 +20,7 @@ public class TooltipView extends DemoView {
 
     @Override
     protected void initView() {
+        createPositionAlignmentExamples();
         createBasicExample();
         createDisabledTooltipExample();
         createOpenCloseTooltipExample();
@@ -104,10 +107,29 @@ public class TooltipView extends DemoView {
 
         tooltip.addClickListener(event -> {
             Notification notification = new Notification(
-                    "You clicked on the avatar", 3000, Notification.Position.TOP_CENTER);
+                    "You clicked on the tooltip", 3000, Notification.Position.TOP_CENTER);
             notification.open();
         });
 
         addCard("Tooltip click listener example", button, tooltip);
+    }
+
+    private void createPositionAlignmentExamples() {
+        VerticalLayout verticalLayout = new VerticalLayout();
+        for (Tooltip.Position position : Tooltip.Position.values()) {
+            HorizontalLayout horizontalLayout = new HorizontalLayout();
+            for (Tooltip.Alignment alignment : Tooltip.Alignment.values()) {
+                Button button = new Button(position.getPositionText()
+                        + " " + alignment.getAlignmentText());
+                Tooltip tooltip = new Tooltip(button, position, alignment);
+
+                tooltip.add(new Paragraph("Position: " + position.getPositionText()));
+                tooltip.add(new Paragraph("Alignment: " + alignment.getAlignmentText()));
+                horizontalLayout.add(button, tooltip);
+            }
+            verticalLayout.add(horizontalLayout);
+        }
+
+        addCard("All Tooltip's Positions and Alignments", verticalLayout);
     }
 }
