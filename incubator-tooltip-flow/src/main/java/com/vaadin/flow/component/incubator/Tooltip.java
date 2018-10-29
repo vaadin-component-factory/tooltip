@@ -43,7 +43,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
 
     private final String ATTACHED_COMPONENT_ID_PROPERTY = "for";
     private final String POSITION_PROPERTY = "position";
-    private final String ALIGNMENT_PROPERTY = "alignment";
+    private final String ALIGNMENT_PROPERTY = "align";
     private final String HIDDEN_MSG_PROPERTY = "hidden";
     private final String MANUAL_PROPERTY = "manual";
 
@@ -51,6 +51,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * Default constructor.
      */
     public Tooltip() {
+        getElement().getStyle().set("margin","0px");
     }
 
     /**
@@ -59,6 +60,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * @param component the tooltip is attached to this component
      */
     public Tooltip(Component component){
+        this();
         attachToComponent(component);
     }
 
