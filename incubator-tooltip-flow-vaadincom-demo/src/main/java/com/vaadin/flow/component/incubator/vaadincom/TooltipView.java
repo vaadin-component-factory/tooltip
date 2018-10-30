@@ -5,6 +5,8 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.incubator.Tooltip;
+import com.vaadin.flow.component.incubator.TooltipAlignment;
+import com.vaadin.flow.component.incubator.TooltipPosition;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -34,8 +36,8 @@ public class TooltipView extends DemoView {
 
         tooltip.attachToComponent(button);
 
-        tooltip.setPosition(Tooltip.Position.RIGHT);
-        tooltip.setAlignment(Tooltip.Alignment.LEFT);
+        tooltip.setPosition(TooltipPosition.RIGHT);
+        tooltip.setAlignment(TooltipAlignment.LEFT);
 
         tooltip.add(new H5("Hello"));
         tooltip.add(new Paragraph("This is an example of how to use it"));
@@ -50,8 +52,8 @@ public class TooltipView extends DemoView {
 
         tooltip.attachToComponent(button);
 
-        tooltip.setPosition(Tooltip.Position.RIGHT);
-        tooltip.setAlignment(Tooltip.Alignment.LEFT);
+        tooltip.setPosition(TooltipPosition.RIGHT);
+        tooltip.setAlignment(TooltipAlignment.LEFT);
 
         tooltip.add(new H5("I am enable"));
         tooltip.add(new Paragraph("I am enable"));
@@ -70,8 +72,8 @@ public class TooltipView extends DemoView {
 
         tooltip.attachToComponent(button);
 
-        tooltip.setPosition(Tooltip.Position.RIGHT);
-        tooltip.setAlignment(Tooltip.Alignment.LEFT);
+        tooltip.setPosition(TooltipPosition.RIGHT);
+        tooltip.setAlignment(TooltipAlignment.LEFT);
 
         tooltip.add(new H5("Manual tooltip"));
         tooltip.add(new Paragraph("The tooltip is controlled programmatically"));
@@ -98,8 +100,8 @@ public class TooltipView extends DemoView {
 
         tooltip.attachToComponent(button);
 
-        tooltip.setPosition(Tooltip.Position.RIGHT);
-        tooltip.setAlignment(Tooltip.Alignment.LEFT);
+        tooltip.setPosition(TooltipPosition.RIGHT);
+        tooltip.setAlignment(TooltipAlignment.LEFT);
 
         tooltip.add(new H5("Click on me"));
         tooltip.add(new Paragraph("Click on the tooltip to see the notification"));
@@ -115,9 +117,9 @@ public class TooltipView extends DemoView {
 
     private void createPositionAlignmentExamples() {
         VerticalLayout verticalLayout = new VerticalLayout();
-        for (Tooltip.Position position : Tooltip.Position.values()) {
+        for (TooltipPosition position : TooltipPosition.values()) {
             HorizontalLayout horizontalLayout = new HorizontalLayout();
-            for (Tooltip.Alignment alignment : Tooltip.Alignment.values()) {
+            for (TooltipAlignment alignment : TooltipAlignment.values()) {
                 Button button = new Button(position.getPositionText()
                         + " " + alignment.getAlignmentText());
                 Tooltip tooltip = new Tooltip(button, position, alignment);
