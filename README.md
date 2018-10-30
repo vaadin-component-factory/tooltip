@@ -21,8 +21,8 @@ Tooltip tooltip = new Tooltip();
 
 tooltip.attachToComponent(button);
 
-tooltip.setPosition(Tooltip.Position.RIGHT);
-tooltip.setAlignment(Tooltip.Alignment.LEFT);
+tooltip.setPosition(TooltipPosition.RIGHT);
+tooltip.setAlignment(TooltipAlignment.LEFT);
 
 tooltip.add(new H5("Hello"));
 tooltip.add(new Paragraph("This is an example of how to use it"));

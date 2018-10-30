@@ -68,34 +68,11 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * Creates the tooltip attaching it to the component and sets its position.
      *
      * @param component the tooltip is attached to this component
-     * @param position  "top","right","left" or "bottom"
-     */
-    public Tooltip(Component component, String position) {
-        this(component);
-        setPosition(position);
-    }
-
-    /**
-     * Creates the tooltip attaching it to the component and sets its position.
-     *
-     * @param component the tooltip is attached to this component
      * @param position  The position of the tooltip {@link TooltipPosition}
      */
     public Tooltip(Component component, TooltipPosition position) {
-        this(component, position.getPositionText());
-    }
-
-    /**
-     * Creates the tooltip attaching it to the component. It also sets its position
-     * and its alignment.
-     *
-     * @param component the tooltip is attached to this component
-     * @param position  "top","right","left" or "bottom"
-     * @param alignment "top","right","left","bottom" or "center"
-     */
-    public Tooltip(Component component, String position, String alignment) {
-        this(component, position);
-        setAlignment(alignment);
+        this(component);
+        setPosition(position);
     }
 
     /**
@@ -107,7 +84,8 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * @param alignment The alignment of the tooltip {@link TooltipAlignment}
      */
     public Tooltip(Component component, TooltipPosition position, TooltipAlignment alignment) {
-        this(component, position.getPositionText(), alignment.getAlignmentText());
+        this(component, position);
+        setAlignment(alignment);
     }
 
     /**
