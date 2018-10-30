@@ -41,6 +41,17 @@ import com.vaadin.flow.shared.Registration;
 @HtmlImport("bower_components/incubator-tooltip/src/incubator-tooltip.html")
 public class Tooltip extends Component implements HasComponents, HasStyle {
 
+    /**
+     * Click event on the component.
+     */
+    @DomEvent("click")
+    public static class ClickEvent extends ComponentEvent<Tooltip> {
+
+        public ClickEvent(Tooltip source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+
     private final String ATTACHED_COMPONENT_ID_PROPERTY = "for";
     private final String POSITION_PROPERTY = "position";
     private final String ALIGNMENT_PROPERTY = "align";
@@ -174,17 +185,6 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      */
     public Registration addClickListener(ComponentEventListener<ClickEvent> listener) {
         return addListener(ClickEvent.class, listener);
-    }
-
-    /**
-     * Click event on the component.
-     */
-    @DomEvent("click")
-    public static class ClickEvent extends ComponentEvent<Tooltip> {
-
-        public ClickEvent(Tooltip source, boolean fromClient) {
-            super(source, fromClient);
-        }
     }
 
     /**
