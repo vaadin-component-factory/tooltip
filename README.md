@@ -1,7 +1,5 @@
 # Incubator Tooltip for Flow
 
-# incubator-tooltip;
-
 [Live Demo ↗](https://incubator.app.fi/incubator-tooltip-demo/)
 
 
@@ -10,15 +8,17 @@
 
 # What does the component do?
 
-It allows to attach tooltips to elements.
+Tooltip is a component that can be used in conjunction with any component to display contextual information.
+When the attached component is hovered, the tooltip displays the contextual information.
+
 # How is it used?
 
 A simple use of the tooltip component would be the following.
+
 ```java
 Button button = new Button("Click me");
 Tooltip tooltip = new Tooltip();
 
-button.setId("myButton");
 tooltip.attachToComponent(button);
 
 tooltip.setPosition(Tooltip.Position.RIGHT);
@@ -31,8 +31,12 @@ tooltip.add(new Paragraph("This is an example of how to use it"));
 It is possible to open and close the tooltip manually:
 
 ```
-Button close = new Button("close", event -> {
-   tooltip.close();
+Button open = new Button("Open tooltip", event -> {
+    tooltip.open();
+});
+
+Button close = new Button("Close tooltip", event -> {
+    tooltip.close();
 });
 
 button.addClickListener(event -> {
@@ -70,10 +74,6 @@ Clone the project in GitHub (or fork it if you plan on contributing)
 ```
 git clone git@github.com/vaadin/incubator-tooltip-flow.git
 ```
-
-To build and install the project into the local repository run 
-
-```mvn install -DskipITs```
 
 in the root directory. `-DskipITs` will skip the integration tests, which require a TestBench license. If you want to run all tests as part of the build, run
 

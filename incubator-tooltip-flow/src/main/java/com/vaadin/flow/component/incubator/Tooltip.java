@@ -51,7 +51,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * Default constructor.
      */
     public Tooltip() {
-        getElement().getStyle().set("margin","0px");
+        getElement().getStyle().set("margin", "0px");
     }
 
     /**
@@ -59,7 +59,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @param component the tooltip is attached to this component
      */
-    public Tooltip(Component component){
+    public Tooltip(Component component) {
         this();
         attachToComponent(component);
     }
@@ -68,21 +68,21 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * Creates the tooltip attaching it to the component and sets its position.
      *
      * @param component the tooltip is attached to this component
-     * @param position "top","right","left" or "bottom"
+     * @param position  "top","right","left" or "bottom"
      */
-    public Tooltip(Component component, String position){
-       this(component);
-       setPosition(position);
+    public Tooltip(Component component, String position) {
+        this(component);
+        setPosition(position);
     }
 
     /**
      * Creates the tooltip attaching it to the component and sets its position.
      *
      * @param component the tooltip is attached to this component
-     * @param position The position of the tooltip {@link Position}
+     * @param position  The position of the tooltip {@link TooltipPosition}
      */
-    public Tooltip(Component component, Position position){
-        this(component,position.getPositionText());
+    public Tooltip(Component component, TooltipPosition position) {
+        this(component, position.getPositionText());
     }
 
     /**
@@ -90,11 +90,11 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * and its alignment.
      *
      * @param component the tooltip is attached to this component
-     * @param position "top","right","left" or "bottom"
+     * @param position  "top","right","left" or "bottom"
      * @param alignment "top","right","left","bottom" or "center"
      */
-    public Tooltip(Component component, String position, String alignment){
-        this(component,position);
+    public Tooltip(Component component, String position, String alignment) {
+        this(component, position);
         setAlignment(alignment);
     }
 
@@ -103,11 +103,11 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * and its alignment.
      *
      * @param component the tooltip is attached to this component
-     * @param position The position of the tooltip {@link Position}
-     * @param alignment The alignment of the tooltip {@link Alignment}
+     * @param position  The position of the tooltip {@link TooltipPosition}
+     * @param alignment The alignment of the tooltip {@link TooltipAlignment}
      */
-    public Tooltip(Component component, Position position, Alignment alignment){
-        this(component,position.getPositionText(),alignment.getAlignmentText());
+    public Tooltip(Component component, TooltipPosition position, TooltipAlignment alignment) {
+        this(component, position.getPositionText(), alignment.getAlignmentText());
     }
 
     /**
@@ -154,8 +154,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * By default this sets or removes the 'disabled' attribute from the
      * element. This can be overridden to have custom handling.
      *
-     * @param enabled
-     *            the new enabled state of the component
+     * @param enabled the new enabled state of the component
      */
     @Override
     public void onEnabledStateChanged(boolean enabled) {
@@ -171,10 +170,10 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * Checks the manual mode of the tooltip.
      *
      * @return manualMode <code>true</code> the tooltip is controlled programmatically
-     *                  <code>false</code>, it is controlled automatically
+     *                    <code>false</code>, it is controlled automatically
      */
-    public boolean isManualMode(){
-        return getElement().getProperty(MANUAL_PROPERTY,false);
+    public boolean isManualMode() {
+        return getElement().getProperty(MANUAL_PROPERTY, false);
     }
 
     /**
@@ -183,10 +182,10 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * manualMode requires to open or close the tooltip manually.
      *
      * @param manualMode <code>true</code> the tooltip is controlled programmatically
-     *                  <code>false</code>, it is controlled automatically
+     *                   <code>false</code>, it is controlled automatically
      */
-    public void setManualMode(boolean manualMode){
-        getElement().setProperty(MANUAL_PROPERTY,manualMode);
+    public void setManualMode(boolean manualMode) {
+        getElement().setProperty(MANUAL_PROPERTY, manualMode);
     }
 
     /**
@@ -215,17 +214,17 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @param position "top","right","left" or "bottom"
      */
-    public void setPosition(String position) {
+    private void setPosition(String position) {
         getElement().setProperty(POSITION_PROPERTY, position);
     }
 
     /**
      * Sets the position of the tooltip.
      *
-     * @param position The position of the tooltip {@link Position}
+     * @param position The position of the tooltip {@link TooltipPosition}
      */
-    public void setPosition(Position position) {
-        getElement().setProperty(POSITION_PROPERTY, position.getPositionText());
+    public void setPosition(TooltipPosition position) {
+        setPosition(position.getPositionText());
     }
 
     /**
@@ -238,7 +237,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @return position "top","right","left" or "bottom"
      */
-    public String getPositionText() {
+    private String getPositionText() {
         return getElement().getProperty(POSITION_PROPERTY);
     }
 
@@ -250,10 +249,10 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return position The position of the tooltip {@link Position}
+     * @return position The position of the tooltip {@link TooltipPosition}
      **/
-    public Position getPosition() {
-        return Position.getPosition(getPositionText());
+    public TooltipPosition getPosition() {
+        return TooltipPosition.getPosition(getPositionText());
     }
 
 
@@ -262,17 +261,17 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @param alignment alignment "top","right","left","bottom" or "center"
      */
-    public void setAlignment(String alignment) {
+    private void setAlignment(String alignment) {
         getElement().setProperty(ALIGNMENT_PROPERTY, alignment);
     }
 
     /**
      * Sets the alignment of the tooltip.
      *
-     * @param alignment The alignment of the tooltip {@link Alignment}
+     * @param alignment The alignment of the tooltip {@link TooltipAlignment}
      */
-    public void setAlignment(Alignment alignment) {
-        getElement().setProperty(ALIGNMENT_PROPERTY, alignment.getAlignmentText());
+    public void setAlignment(TooltipAlignment alignment) {
+        setAlignment(alignment.getAlignmentText());
     }
 
     /**
@@ -285,7 +284,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      *
      * @return alignment "top","right","left","bottom" or center
      */
-    public String getAlignmentText() {
+    private String getAlignmentText() {
         return getElement().getProperty(ALIGNMENT_PROPERTY);
     }
 
@@ -297,82 +296,9 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return alignment The alignment of the tooltip {@link Alignment}
+     * @return alignment The alignment of the tooltip {@link TooltipAlignment}
      **/
-    public Alignment getAlignment() {
-        return Alignment.getAlignment(getAlignmentText());
+    public TooltipAlignment getAlignment() {
+        return TooltipAlignment.getAlignment(getAlignmentText());
     }
-
-    /**
-     * Helper enumeration to specify the position of the <code>Tooltip</code>.
-     * Position determines if the tooltip will be positioned on the top, bottom,
-     * left or right of the attached component.
-     */
-    public enum Position {
-        TOP("top"),
-        RIGHT("right"),
-        LEFT("left"),
-        BOTTOM("bottom");
-
-        private String pos;
-
-        Position(String pos) {
-            this.pos = pos;
-        }
-
-        public String getPositionText() {
-            return pos;
-        }
-
-        public static Position getPosition(String text) {
-            for (Position position : Position.values()) {
-                if (position.getPositionText().equals(text)) {
-                    return position;
-                }
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Helper enumeration to specify the alignment of the <code>Tooltip</code>.
-     * <p>
-     * The alignment determines the placement of the tooltip in the chosen position.
-     * <p>
-     * i.e.     alignment bottom    alignment top
-     *          !!!!!!!!!!!!!
-     *          !           !
-     * ------   !           !       !!!!!!!!!!!!!
-     * |Button| !           !       !           !
-     * ------   !!!!!!!!!!!!!       !           !
-     *                              !           !
-     *                              !!!!!!!!!!!!!
-     */
-    public enum Alignment {
-        TOP("top"),
-        RIGHT("right"),
-        LEFT("left"),
-        BOTTOM("bottom"),
-        CENTER("center");
-
-        private String align;
-
-        Alignment(String align) {
-            this.align = align;
-        }
-
-        public String getAlignmentText() {
-            return align;
-        }
-
-        public static Alignment getAlignment(String text) {
-            for (Alignment alignment : Alignment.values()) {
-                if (alignment.getAlignmentText().equals(text)) {
-                    return alignment;
-                }
-            }
-            return null;
-        }
-    }
-
 }
