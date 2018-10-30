@@ -190,15 +190,6 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     /**
      * Sets the position of the tooltip.
      *
-     * @param position "top","right","left" or "bottom"
-     */
-    private void setPosition(String position) {
-        getElement().setProperty(POSITION_PROPERTY, position);
-    }
-
-    /**
-     * Sets the position of the tooltip.
-     *
      * @param position The position of the tooltip {@link TooltipPosition}
      */
     public void setPosition(TooltipPosition position) {
@@ -213,34 +204,10 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return position "top","right","left" or "bottom"
-     */
-    private String getPositionText() {
-        return getElement().getProperty(POSITION_PROPERTY);
-    }
-
-    /**
-     * Gets the position of the tooltip.
-     *
-     * <p>
-     * This property is not synchronized automatically from the client side, so
-     * the returned value may not be the same as in client side.
-     * </p>
-     *
      * @return position The position of the tooltip {@link TooltipPosition}
      **/
     public TooltipPosition getPosition() {
         return TooltipPosition.getPosition(getPositionText());
-    }
-
-
-    /**
-     * Sets the alignment of the tooltip.
-     *
-     * @param alignment alignment "top","right","left","bottom" or "center"
-     */
-    private void setAlignment(String alignment) {
-        getElement().setProperty(ALIGNMENT_PROPERTY, alignment);
     }
 
     /**
@@ -260,10 +227,42 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return alignment "top","right","left","bottom" or center
+     * @return alignment The alignment of the tooltip {@link TooltipAlignment}
+     **/
+    public TooltipAlignment getAlignment() {
+        return TooltipAlignment.getAlignment(getAlignmentText());
+    }
+
+    /**
+     * Sets the position of the tooltip.
+     *
+     * @param position "top","right","left" or "bottom"
      */
-    private String getAlignmentText() {
-        return getElement().getProperty(ALIGNMENT_PROPERTY);
+    private void setPosition(String position) {
+        getElement().setProperty(POSITION_PROPERTY, position);
+    }
+
+    /**
+     * Gets the position of the tooltip.
+     *
+     * <p>
+     * This property is not synchronized automatically from the client side, so
+     * the returned value may not be the same as in client side.
+     * </p>
+     *
+     * @return position "top","right","left" or "bottom"
+     */
+    private String getPositionText() {
+        return getElement().getProperty(POSITION_PROPERTY);
+    }
+
+    /**
+     * Sets the alignment of the tooltip.
+     *
+     * @param alignment alignment "top","right","left","bottom" or "center"
+     */
+    private void setAlignment(String alignment) {
+        getElement().setProperty(ALIGNMENT_PROPERTY, alignment);
     }
 
     /**
@@ -274,9 +273,9 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return alignment The alignment of the tooltip {@link TooltipAlignment}
-     **/
-    public TooltipAlignment getAlignment() {
-        return TooltipAlignment.getAlignment(getAlignmentText());
+     * @return alignment "top","right","left","bottom" or center
+     */
+    private String getAlignmentText() {
+        return getElement().getProperty(ALIGNMENT_PROPERTY);
     }
 }
