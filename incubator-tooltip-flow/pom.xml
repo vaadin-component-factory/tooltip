@@ -62,9 +62,9 @@
                             <AdVaaLicen>cval</AdVaaLicen>
                             <AdVaaName>incubator-tooltip</AdVaaName>
                             <AdVaaPkg>com.vaadin.incubator.tooltip</AdVaaPkg>
-                            <!-- Implementation-Title and Implementation-Version 
+                            <!-- Implementation-Title and Implementation-Version
                                 come from the POM by default -->
-                            <Implementation-Title>Vaadin Crud</Implementation-Title>
+                            <Implementation-Title>Incubator Tooltip</Implementation-Title>
                         </manifestEntries>
                     </archive>
                 </configuration>
