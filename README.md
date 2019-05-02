@@ -1,4 +1,4 @@
-# Incubator Tooltip for Flow
+# Tooltip
 
 [Live Demo ↗](https://incubator.app.fi/incubator-tooltip-demo/)
 

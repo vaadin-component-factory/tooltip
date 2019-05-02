@@ -9,10 +9,12 @@
 		<version>2.0.0</version>
 		<relativePath />
 	</parent>
-	<artifactId>incubator-tooltip-flow-root</artifactId>
+
+	<groupId>com.vaadin.componentfactory</groupId>
+	<artifactId>tooltip-root</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Incubator Tooltip Root</name>
+	<name>Tooltip Root</name>
 	<inceptionYear>2018</inceptionYear>
 	<organization>
 		<name>Vaadin Ltd</name>
@@ -30,8 +32,8 @@
 	</properties>
 
 	<modules>
-		<module>incubator-tooltip-flow</module>
-		<module>incubator-tooltip-flow-vaadincom-demo</module>
+		<module>tooltip</module>
+		<module>tooltip-demo</module>
 	</modules>
 	<repositories>
 		<repository>
