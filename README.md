@@ -1,9 +1,9 @@
-# Tooltip
+# Component Factory Tooltip for Vaadin 10+
 
-[Live Demo ↗](https://incubator.app.fi/incubator-tooltip-demo/)
+[Live Demo ↗](https://incubator.app.fi/tooltip-demo/tooltip)
 
 
-[&lt;incubator-tooltip&gt;](https://vaadin.com/directory/component/vaadinincubator-tooltip) is a Web Component providing an easy way to display tooltips on any html element.
+[&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-password-strength) is a Web Component providing an easy way to display tooltips on any html element.
 
 
 # What does the component do?
@@ -54,27 +54,29 @@ tooltip.addClickListener(event -> {
 ```
 
 # How to run the demo?
-
-The Demo can be run going to the project incubator-tooltip-flow-vaadincom-demo and executing the maven goal:
+The Demo can be run going to the project vcf-tooltip-flow-vaadincom-demo and executing the maven goal:
 
 ```mvn jetty:run```
 
 
-## License & Author
-
-This Add-on is distributed under [Commercial Vaadin Add-on License version 3](http://vaadin.com/license/cval-3) (CVALv3). For license terms, see LICENSE.txt.
-
-Incubator Tooltip is written by Vaadin Ltd.
-
-
 ## Setting up for development:
-
 Clone the project in GitHub (or fork it if you plan on contributing)
 
 ```
-git clone git@github.com/vaadin/incubator-tooltip-flow.git
+git clone git@github.com/vaadin/vcf-tooltip-flow.git
 ```
 
 in the root directory. `-DskipITs` will skip the integration tests, which require a TestBench license. If you want to run all tests as part of the build, run
 
 ```mvn install```
+
+
+
+## Vaadin Prime
+This component is available in of Vaadin Prime subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: https://vaadin.com/pricing
+
+
+## License & Author
+This Add-on is distributed under [Commercial Vaadin Add-on License version 3](http://vaadin.com/license/cval-3) (CVALv3). For license terms, see LICENSE.txt.
+
+Incubator Tooltip is written by Vaadin Ltd.
