@@ -1,19 +1,18 @@
 # Component Factory Tooltip for Vaadin 10+
 
-[Live Demo ↗](https://incubator.app.fi/tooltip-demo/tooltip)
-
-
-[&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-password-strength) is a Web Component providing an easy way to display tooltips on any html element.
-
-
-# What does the component do?
-
+This is server-side component of [&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-password-strength) Web Component.
 Tooltip is a component that can be used in conjunction with any component to display contextual information.
 When the attached component is hovered, the tooltip displays the contextual information.
 
-# How is it used?
+[Live Demo ↗](https://incubator.app.fi/tooltip-demo/tooltip)
 
-A simple use of the tooltip component would be the following.
+[<img src="https://raw.githubusercontent.com/vaadin/incubator-tooltip/master/screenshot.png" width="300" alt="Screenshot of vcf-tooltip">](https://vaadin.com/components/vcf-tooltip)
+
+
+## Usage
+
+A simple use of the tooltip component would be the following: create `Tooltip` and add some elements inside, then attach it to target component 
+by calling `attachToComponent` method on tooltip object.
 
 ```java
 Button button = new Button("Click me");
@@ -30,7 +29,7 @@ tooltip.add(new Paragraph("This is an example of how to use it"));
 
 It is possible to open and close the tooltip manually:
 
-```
+```java
 Button open = new Button("Open tooltip", event -> {
     tooltip.open();
 });
@@ -45,19 +44,13 @@ button.addClickListener(event -> {
 ```
 
 Click listeners can be added to the tooltip:
-```
+```java
 tooltip.addClickListener(event -> {
     Notification notification = new Notification(
             "You clicked on the avatar", 3000, Notification.Position.TOP_CENTER);
     notification.open();
 });
 ```
-
-# How to run the demo?
-The Demo can be run going to the project vcf-tooltip-flow-vaadincom-demo and executing the maven goal:
-
-```mvn jetty:run```
-
 
 ## Setting up for development:
 Clone the project in GitHub (or fork it if you plan on contributing)
@@ -71,12 +64,16 @@ in the root directory. `-DskipITs` will skip the integration tests, which requir
 ```mvn install```
 
 
+## Demo
+The Demo can be run going to the project vcf-tooltip-flow-vaadincom-demo and executing the maven goal:
 
-## Vaadin Prime
+```mvn jetty:run```
+
+# Vaadin Prime
 This component is available in of Vaadin Prime subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: https://vaadin.com/pricing
 
 
-## License & Author
+# License & Author
 This Add-on is distributed under [Commercial Vaadin Add-on License version 3](http://vaadin.com/license/cval-3) (CVALv3). For license terms, see LICENSE.txt.
 
 Incubator Tooltip is written by Vaadin Ltd.
