@@ -45,7 +45,7 @@
 	</properties>
 
 	<modules>
-		<!--<module>tooltip</module>-->
+		<module>tooltip</module>
 		<module>tooltip-demo</module>
 	</modules>
 
