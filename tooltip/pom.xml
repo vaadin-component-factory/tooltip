@@ -3,16 +3,27 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.vaadin.componentfactory</groupId>
-        <artifactId>tooltip-root</artifactId>
-        <version>1.2.0</version>
-    </parent>
-
+    <groupId>com.vaadin.componentfactory</groupId>
     <artifactId>tooltip</artifactId>
     <packaging>jar</packaging>
 
     <name>Tooltip</name>
+
+    <version>1.2.0</version>
+    <inceptionYear>2018</inceptionYear>
+    <organization>
+        <name>Vaadin Ltd</name>
+        <url>http://vaadin.com/</url>
+    </organization>
+
+    <properties>
+        <vaadin.version>10.0.6</vaadin.version>
+        <!-- <testbench.version>6.0.1</testbench.version> -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <licenses>
         <license>
@@ -21,7 +32,23 @@
         </license>
     </licenses>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <type>pom</type>
+                <scope>import</scope>
+                <version>${vaadin.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.vaadin.componentfactory.webjar</groupId>
             <artifactId>vcf-tooltip</artifactId>
