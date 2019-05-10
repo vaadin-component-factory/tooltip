@@ -12,11 +12,14 @@ When the attached component is hovered, the tooltip displays the contextual info
 ## Usage
 
 A simple use of the tooltip component would be the following: create `Tooltip` and add some elements inside, then attach it to target component 
-by calling `attachToComponent` method on tooltip object.
+by calling `attachToComponent` method on tooltip object. It's important to add a tooltip to layout.
 
 ```java
 Button button = new Button("Click me");
 Tooltip tooltip = new Tooltip();
+
+// Tooltip should be added to layout as well 
+add(button, tooltip);
 
 tooltip.attachToComponent(button);
 
