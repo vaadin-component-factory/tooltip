@@ -9,7 +9,7 @@
 
     <name>Tooltip</name>
 
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
@@ -17,7 +17,7 @@
     </organization>
 
     <properties>
-        <vaadin.version>10.0.6</vaadin.version>
+        <vaadin.version>10.0.6</vaadin.version>0
         <!-- <testbench.version>6.0.1</testbench.version> -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.vaadin.componentfactory.webjar</groupId>
             <artifactId>vcf-tooltip</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 
