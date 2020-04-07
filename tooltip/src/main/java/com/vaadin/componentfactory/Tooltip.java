@@ -26,6 +26,8 @@ import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.internal.nodefeature.ElementData;
 import com.vaadin.flow.shared.Registration;
 
@@ -37,6 +39,8 @@ import com.vaadin.flow.shared.Registration;
  */
 @Tag("vcf-tooltip")
 @HtmlImport("bower_components/vcf-tooltip/src/vcf-tooltip.html")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.2.2")
+@JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
 public class Tooltip extends Component implements HasComponents, HasStyle {
 
     /**
@@ -106,7 +110,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
         Objects.requireNonNull(component);
 
         getElement().getNode().runWhenAttached(ui ->
-                ui.getPage().executeJavaScript("$0.targetElement = $1;",
+                ui.getPage().executeJs("$0.targetElement = $1;",
                         getElement(), component.getElement()
                 ));
     }
@@ -148,7 +152,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
         // If the node has feature ElementData, then we know that the state
         // provider accepts attributes
         if (getElement().getNode().hasFeature(ElementData.class)) {
-            getElement().callFunction("hide"); // needed to close tooltip
+            getElement().callJsFunction("hide"); // needed to close tooltip
             getElement().setAttribute(MANUAL_PROPERTY, !enabled);
         }
     }

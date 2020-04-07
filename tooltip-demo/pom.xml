@@ -9,7 +9,7 @@
 
     <name>Tooltip Demo</name>
 
-    <version>1.2.0</version>
+    <version>1.2.2</version>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
@@ -18,8 +18,7 @@
 
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <flow.version>1.0.5</flow.version>
-        <vaadin.version>10.0.6</vaadin.version>
+        <vaadin.version>14.1.17</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,12 +53,12 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>flow-component-demo-helpers</artifactId>
-            <version>${flow.version}</version>
+            <version>2.1.7</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>tooltip</artifactId>
-            <version>1.2.1</version>
+            <version>1.2.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -81,10 +80,26 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.11.v20180605</version>
+                <version>9.4.15.v20190215</version>
                 <configuration>
                     <scanIntervalSeconds>1</scanIntervalSeconds>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                        </goals>
+                        <configuration>
+                            <convertHtml>false</convertHtml>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
