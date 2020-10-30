@@ -39,7 +39,7 @@ import com.vaadin.flow.shared.Registration;
  */
 @Tag("vcf-tooltip")
 @HtmlImport("bower_components/vcf-tooltip/src/vcf-tooltip.html")
-@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.2.2")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.1")
 @JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
 public class Tooltip extends Component implements HasComponents, HasStyle {
 
@@ -59,6 +59,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     private final String ALIGNMENT_PROPERTY = "align";
     private final String HIDDEN_MSG_PROPERTY = "hidden";
     private final String MANUAL_PROPERTY = "manual";
+    private final String CLOSE_BUTTON_PROPERTY = "closeButton";
 
     /**
      * Default constructor.
@@ -131,12 +132,26 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     public void open() {
         getElement().setProperty(HIDDEN_MSG_PROPERTY, false);
     }
+    
+    /**
+     * Checks if the tooltip is open.
+     */
+    public boolean isOpen() {
+        return !getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
+    }
 
     /**
      * Hides the content of the tooltip.
      */
     public void close() {
         getElement().setProperty(HIDDEN_MSG_PROPERTY, true);
+    }
+    
+    /**
+     * Checks if the tooltip is closed.
+     */
+    public boolean isClosed() {
+        return getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
     }
 
     /**
@@ -177,6 +192,26 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      */
     public void setManualMode(boolean manualMode) {
         getElement().setProperty(MANUAL_PROPERTY, manualMode);
+    }
+
+    /**
+     * Checks if the close button is visible.
+     *
+     * @return visible <code>true</code> the close button is visible
+     *                 <code>false</code>, it is hidden
+     */
+    public void isCloseButtonVisible() {
+        getElement().getProperty(CLOSE_BUTTON_PROPERTY, false);
+    }
+
+    /**
+     * Show or hide the close button when using manual mode.
+     *
+     * @param visible <code>true</code> the close button is visible
+     *                <code>false</code>, it is hidden
+     */
+    public void setCloseButtonVisible(boolean visible) {
+        getElement().setProperty(CLOSE_BUTTON_PROPERTY, visible);
     }
 
     /**
