@@ -72,11 +72,5 @@ The Demo can be run going to the project vcf-tooltip-flow-vaadincom-demo and exe
 
 ```mvn jetty:run```
 
-# Vaadin Prime
-This component is available in of Vaadin Prime subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: https://vaadin.com/pricing
-
-
 # License & Author
-This Add-on is distributed under [Commercial Vaadin Add-on License version 3](http://vaadin.com/license/cval-3) (CVALv3). For license terms, see LICENSE.txt.
-
-Incubator Tooltip is written by Vaadin Ltd.
+Apache License 2.0
