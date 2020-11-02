@@ -134,6 +134,8 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     
     /**
      * Checks if the tooltip is open.
+     * 
+     * @return boolean value
      */
     public boolean isOpen() {
         return !getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
@@ -148,6 +150,8 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     
     /**
      * Checks if the tooltip is closed.
+     * 
+     * @return boolean value
      */
     public boolean isClosed() {
         return getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
@@ -196,11 +200,11 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
     /**
      * Checks if the close button is visible.
      *
-     * @return visible <code>true</code> the close button is visible
-     *                 <code>false</code>, it is hidden
+     * @return a boolean value, <code>true</code> the close button is visible
+     *         <code>false</code>, it is hidden
      */
-    public void isCloseButtonVisible() {
-        getElement().getProperty(CLOSE_BUTTON_PROPERTY, false);
+    public boolean  isCloseButtonVisible() {
+        return getElement().getProperty(CLOSE_BUTTON_PROPERTY, false);
     }
 
     /**

@@ -77,7 +77,8 @@ public class TooltipView extends DemoView {
 
         tooltip.add(new H5("Manual tooltip"));
         tooltip.add(new Paragraph("The tooltip is controlled programmatically"));
-
+        tooltip.setCloseButtonVisible(true);
+        
         Button open = new Button("Open tooltip", event -> {
             tooltip.open();
         });
