@@ -69,6 +69,8 @@ public class TooltipView extends DemoView {
 
         Button button = new Button("Button");
         Tooltip tooltip = new Tooltip();
+        tooltip.setThemeName("light");
+//        tooltip.getStyle().set("--lumo-base-color", "var(--lumo-contrast-20pct");
 
         tooltip.attachToComponent(button);
 

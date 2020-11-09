@@ -24,6 +24,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -38,9 +39,9 @@ import com.vaadin.flow.shared.Registration;
  * @author Vaadin Ltd
  */
 @Tag("vcf-tooltip")
-@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.2")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.4")
 @JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
-public class Tooltip extends Component implements HasComponents, HasStyle {
+public class Tooltip extends Component implements HasComponents, HasStyle, HasTheme {
 
     /**
      * Click event on the component.
@@ -203,7 +204,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle {
      * @return a boolean value, <code>true</code> the close button is visible
      *         <code>false</code>, it is hidden
      */
-    public boolean  isCloseButtonVisible() {
+    public boolean isCloseButtonVisible() {
         return getElement().getProperty(CLOSE_BUTTON_PROPERTY, false);
     }
 
