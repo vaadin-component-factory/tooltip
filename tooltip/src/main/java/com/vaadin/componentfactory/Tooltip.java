@@ -25,6 +25,7 @@ import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.HasTheme;
+import com.vaadin.flow.component.Synchronize;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -39,7 +40,7 @@ import com.vaadin.flow.shared.Registration;
  * @author Vaadin Ltd
  */
 @Tag("vcf-tooltip")
-@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.4")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.5")
 @JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
 public class Tooltip extends Component implements HasComponents, HasStyle, HasTheme {
 
@@ -130,7 +131,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle, HasTh
      * Opens the content of the tooltip.
      */
     public void open() {
-        getElement().setProperty(HIDDEN_MSG_PROPERTY, false);
+        getElement().executeJs("this.show();");
     }
     
     /**
@@ -138,6 +139,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle, HasTh
      * 
      * @return boolean value
      */
+    @Synchronize(property = HIDDEN_MSG_PROPERTY, value = "open-changed")
     public boolean isOpen() {
         return !getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
     }
@@ -146,7 +148,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle, HasTh
      * Hides the content of the tooltip.
      */
     public void close() {
-        getElement().setProperty(HIDDEN_MSG_PROPERTY, true);
+        getElement().executeJs("this.hide();");
     }
     
     /**
@@ -154,6 +156,7 @@ public class Tooltip extends Component implements HasComponents, HasStyle, HasTh
      * 
      * @return boolean value
      */
+    @Synchronize(property = HIDDEN_MSG_PROPERTY, value = "hidden-changed")
     public boolean isClosed() {
         return getElement().getProperty(HIDDEN_MSG_PROPERTY, false);
     }
