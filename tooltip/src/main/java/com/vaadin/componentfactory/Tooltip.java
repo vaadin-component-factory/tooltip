@@ -27,7 +27,6 @@ import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Synchronize;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.internal.nodefeature.ElementData;
@@ -40,7 +39,7 @@ import com.vaadin.flow.shared.Registration;
  * @author Vaadin Ltd
  */
 @Tag("vcf-tooltip")
-@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.5")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.11")
 @JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
 public class Tooltip extends Component implements HasComponents, HasStyle, HasTheme {
 
