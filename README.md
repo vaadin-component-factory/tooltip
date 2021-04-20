@@ -1,6 +1,6 @@
 # Component Factory Tooltip for Vaadin 10+
 
-This is server-side component of [&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-password-strength) Web Component.
+This is server-side component of [&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-tooltip) Web Component.
 Tooltip is a component that can be used in conjunction with any component to display contextual information.
 When the attached component is hovered, the tooltip displays the contextual information.
 
