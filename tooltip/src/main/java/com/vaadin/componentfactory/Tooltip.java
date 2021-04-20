@@ -39,7 +39,7 @@ import com.vaadin.flow.shared.Registration;
  * @author Vaadin Ltd
  */
 @Tag("vcf-tooltip")
-@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.13")
+@NpmPackage(value = "@vaadin-component-factory/vcf-tooltip", version = "1.3.14")
 @JsModule("@vaadin-component-factory/vcf-tooltip/src/vcf-tooltip.js")
 public class Tooltip extends Component implements HasComponents, HasStyle, HasTheme {
 
