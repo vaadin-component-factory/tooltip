@@ -8,15 +8,15 @@
 
     <name>Tooltip</name>
 
-    <version>1.3.5</version>
+    <version>1.3.6</version>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
-        <url>http://vaadin.com/</url>
+        <url>https://vaadin.com/</url>
     </organization>
 
     <properties>
-        <vaadin.version>14.4.10</vaadin.version>
+        <vaadin.version>14.6.5</vaadin.version>
         <!-- <testbench.version>6.0.1</testbench.version> -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
