@@ -6,7 +6,7 @@
 	<groupId>com.vaadin.componentfactory</groupId>
 	<artifactId>tooltip-root</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.2</version>
+	<version>2.0.3</version>
 	<name>Tooltip Root</name>
 	<inceptionYear>2018</inceptionYear>
 	
