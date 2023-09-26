@@ -9,7 +9,7 @@
 
     <name>Tooltip Demo</name>
 
-    <version>2.0.3</version>
+    <version>22.0.0</version>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
@@ -18,9 +18,9 @@
 
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <vaadin.version>23.0.12</vaadin.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <vaadin.version>22.1.2</vaadin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -74,13 +74,13 @@
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-component-demo-helpers</artifactId>
-            <version>${vaadin.version}</version>
+            <artifactId>flow-component-demo-helpers</artifactId>
+            <version>9.0.26</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>tooltip</artifactId>
-            <version>2.0.3</version>
+            <version>22.0.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
