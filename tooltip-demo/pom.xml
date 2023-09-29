@@ -9,7 +9,7 @@
 
     <name>Tooltip Demo</name>
 
-    <version>22.0.0</version>
+    <version>22.0.1</version>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
@@ -80,7 +80,7 @@
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>tooltip</artifactId>
-            <version>22.0.0</version>
+            <version>22.0.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
