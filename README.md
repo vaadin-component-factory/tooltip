@@ -1,3 +1,6 @@
+# Deprecated
+Since Vaadin 23.3, the Tooltip component is included in Vaadin, so you should replace this component to the official [Tooltip](https://vaadin.com/docs/latest/components/tooltip) component
+
 # Component Factory Tooltip for Vaadin 10+
 
 This is server-side component of [&lt;vcf-tooltip&gt;](https://github.com/vaadin-component-factory/vcf-tooltip) Web Component.
